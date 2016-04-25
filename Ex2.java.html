@@ -1,0 +1,262 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>Ex2.java</title>
+<style type="text/css">
+<!--
+body.hl	{ background-color:#ffffff; }
+pre.hl	{ color:#000000; background-color:#ffffff; font-size:10pt; font-family:'Courier New';}
+.hl.num { color:#000000; }
+.hl.esc { color:#666666; }
+.hl.str { color:#666666; }
+.hl.dstr { color:#000000; }
+.hl.slc { color:#b30000; }
+.hl.com { color:#b30000; }
+.hl.dir { color:#0000b3; }
+.hl.sym { color:#000000; }
+.hl.line { color:#555555; }
+.hl.mark	{ background-color:#ffffbb;}
+.hl.kwa { color:#0000b3; }
+.hl.kwb { color:#4c73a6; }
+.hl.kwc { color:#0000b3; }
+.hl.kwd { color:#000000; }
+//-->
+</style>
+</head>
+<body class="hl">
+<pre class="hl"><span class="hl line">    1 </span><span class="hl slc">//importação das classes necessárias</span>
+<span class="hl line">    2 </span><span class="hl slc">//layouts para alinhamento dos componentes</span>
+<span class="hl line">    3 </span><span class="hl kwa">import</span> java<span class="hl sym">.</span>awt<span class="hl sym">.</span><span class="hl kwc">FlowLayout</span><span class="hl sym">;</span>
+<span class="hl line">    4 </span><span class="hl kwa">import</span> java<span class="hl sym">.</span>awt<span class="hl sym">.</span><span class="hl kwc">GridLayout</span><span class="hl sym">;</span>
+<span class="hl line">    5 </span><span class="hl slc">//janela</span>
+<span class="hl line">    6 </span><span class="hl kwa">import</span> javax<span class="hl sym">.</span>swing<span class="hl sym">.</span><span class="hl kwc">JFrame</span><span class="hl sym">;</span>
+<span class="hl line">    7 </span><span class="hl slc">//butão</span>
+<span class="hl line">    8 </span><span class="hl kwa">import</span> javax<span class="hl sym">.</span>swing<span class="hl sym">.</span><span class="hl kwc">JButton</span><span class="hl sym">;</span>
+<span class="hl line">    9 </span><span class="hl slc">//caixa de seleção</span>
+<span class="hl line">   10 </span><span class="hl kwa">import</span> javax<span class="hl sym">.</span>swing<span class="hl sym">.</span><span class="hl kwc">JComboBox</span><span class="hl sym">;</span>
+<span class="hl line">   11 </span><span class="hl slc">//inserção de texto e/ou imagem</span>
+<span class="hl line">   12 </span><span class="hl kwa">import</span> javax<span class="hl sym">.</span>swing<span class="hl sym">.</span><span class="hl kwc">JLabel</span><span class="hl sym">;</span>
+<span class="hl line">   13 </span><span class="hl slc">//classe Icon junto com ImageIcon anexão uma imagem a um Jlabel</span>
+<span class="hl line">   14 </span><span class="hl kwa">import</span> javax<span class="hl sym">.</span>swing<span class="hl sym">.</span><span class="hl kwc">Icon</span><span class="hl sym">;</span>
+<span class="hl line">   15 </span><span class="hl kwa">import</span> javax<span class="hl sym">.</span>swing<span class="hl sym">.</span><span class="hl kwc">ImageIcon</span><span class="hl sym">;</span>
+<span class="hl line">   16 </span><span class="hl slc">//exibição de textos numa pequena caixa de mensagens</span>
+<span class="hl line">   17 </span><span class="hl kwa">import</span> javax<span class="hl sym">.</span>swing<span class="hl sym">.</span><span class="hl kwc">JOptionPane</span><span class="hl sym">;</span>
+<span class="hl line">   18 </span><span class="hl slc">//painel</span>
+<span class="hl line">   19 </span><span class="hl kwa">import</span> javax<span class="hl sym">.</span>swing<span class="hl sym">.</span><span class="hl kwc">JPanel</span><span class="hl sym">;</span>
+<span class="hl line">   20 </span><span class="hl slc">//caixa de textos</span>
+<span class="hl line">   21 </span><span class="hl kwa">import</span> javax<span class="hl sym">.</span>swing<span class="hl sym">.</span><span class="hl kwc">JTextArea</span><span class="hl sym">;</span>
+<span class="hl line">   22 </span><span class="hl slc">//campo para inserção de valores ou caracteres</span>
+<span class="hl line">   23 </span><span class="hl kwa">import</span> javax<span class="hl sym">.</span>swing<span class="hl sym">.</span><span class="hl kwc">JTextField</span><span class="hl sym">;</span>
+<span class="hl line">   24 </span><span class="hl slc">//Evento para de ouvir um evento do botão</span>
+<span class="hl line">   25 </span><span class="hl kwa">import</span> java<span class="hl sym">.</span>awt<span class="hl sym">.</span>event<span class="hl sym">.</span><span class="hl kwc">ActionListener</span><span class="hl sym">;</span>
+<span class="hl line">   26 </span><span class="hl slc">//Evento de executar uma ação do evento que foi ouvido(ativado)</span>
+<span class="hl line">   27 </span><span class="hl kwa">import</span> java<span class="hl sym">.</span>awt<span class="hl sym">.</span>event<span class="hl sym">.</span><span class="hl kwc">ActionEvent</span><span class="hl sym">;</span>
+<span class="hl line">   28 </span><span class="hl slc">//Tratador de erros</span>
+<span class="hl line">   29 </span><span class="hl kwa">import</span> java<span class="hl sym">.</span>util<span class="hl sym">.</span><span class="hl kwc">InputMismatchException</span><span class="hl sym">;</span>
+<span class="hl line">   30 </span>
+<span class="hl line">   31 </span><span class="hl slc">//Criação da classe EX2 extendendo a classe JFrame que foi importada</span>
+<span class="hl line">   32 </span><span class="hl kwa">public class</span> Ex2 <span class="hl kwa">extends</span> <span class="hl kwc">JFrame</span>
+<span class="hl line">   33 </span><span class="hl sym">{</span>
+<span class="hl line">   34 </span>   <span class="hl slc">//declaração das variáveis</span>
+<span class="hl line">   35 </span>   <span class="hl slc">//Vetor de caracteres (String) de 2 colunas</span>
+<span class="hl line">   36 </span>   <span class="hl kwa">private</span> <span class="hl kwc">String</span> sexo<span class="hl sym">[]={</span><span class="hl str">&quot;Mulher&quot;</span><span class="hl sym">,</span><span class="hl str">&quot;Homem&quot;</span><span class="hl sym">};</span>
+<span class="hl line">   37 </span>   <span class="hl slc">//inteiros (int)</span>
+<span class="hl line">   38 </span>   <span class="hl kwb">int</span> tipo<span class="hl sym">,</span> foto<span class="hl sym">;</span>
+<span class="hl line">   39 </span>   <span class="hl slc">//numeros de pontos flutuantes (double)</span>
+<span class="hl line">   40 </span>   <span class="hl kwb">double</span> altura<span class="hl sym">,</span> peso<span class="hl sym">,</span> massa<span class="hl sym">;</span>
+<span class="hl line">   41 </span>   <span class="hl slc">//criando um array já com os valores configurados do tipo double</span>
+<span class="hl line">   42 </span>   <span class="hl kwb">double</span> imc_homens<span class="hl sym">[] ={</span><span class="hl num">20.7</span><span class="hl sym">,</span><span class="hl num">26.4</span><span class="hl sym">};</span>
+<span class="hl line">   43 </span>   <span class="hl kwb">double</span> imc_mulheres<span class="hl sym">[] ={</span><span class="hl num">19.1</span><span class="hl sym">,</span><span class="hl num">25.8</span><span class="hl sym">};</span>
+<span class="hl line">   44 </span>   <span class="hl kwa">private</span> <span class="hl kwc">String</span> string<span class="hl sym">=</span><span class="hl str">&quot;&quot;</span><span class="hl sym">;</span>
+<span class="hl line">   45 </span>
+<span class="hl line">   46 </span>   <span class="hl slc">//criação do FlowLayout que alinha componentes da esquerda para a direita.</span>
+<span class="hl line">   47 </span>   <span class="hl kwa">private</span> <span class="hl kwc">FlowLayout</span> flowLayout <span class="hl sym">=</span> <span class="hl kwa">new</span> <span class="hl kwc">FlowLayout</span><span class="hl sym">();</span>
+<span class="hl line">   48 </span>   <span class="hl com">/*criação de GridLayout com 4 linhas e 2 colunas com 10 de espaço em largura</span>
+<span class="hl line">   49 </span><span class="hl com">    e 1 de altura*/</span>
+<span class="hl line">   50 </span>   <span class="hl kwa">private</span> <span class="hl kwc">GridLayout</span> gridLayout <span class="hl sym">=</span> <span class="hl kwa">new</span> <span class="hl kwc">GridLayout</span><span class="hl sym">(</span><span class="hl num">4</span><span class="hl sym">,</span><span class="hl num">2</span><span class="hl sym">,</span><span class="hl num">10</span><span class="hl sym">,</span><span class="hl num">1</span><span class="hl sym">);</span>
+<span class="hl line">   51 </span>   <span class="hl slc">//criação de um painel</span>
+<span class="hl line">   52 </span>   <span class="hl kwa">private</span> <span class="hl kwc">JPanel</span> gridJPanel <span class="hl sym">=</span> <span class="hl kwa">new</span> <span class="hl kwc">JPanel</span><span class="hl sym">();</span>
+<span class="hl line">   53 </span>
+<span class="hl line">   54 </span>   <span class="hl slc">//criação de dois botões com os nomes Calcular e Limpar Dados</span>
+<span class="hl line">   55 </span>   <span class="hl kwa">private</span> <span class="hl kwc">JButton</span> butao <span class="hl sym">=</span> <span class="hl kwa">new</span> <span class="hl kwc">JButton</span><span class="hl sym">(</span><span class="hl str">&quot;Calcular&quot;</span><span class="hl sym">);</span>
+<span class="hl line">   56 </span>   <span class="hl kwa">private</span> <span class="hl kwc">JButton</span> butao2 <span class="hl sym">=</span> <span class="hl kwa">new</span> <span class="hl kwc">JButton</span><span class="hl sym">(</span><span class="hl str">&quot;Limpar Dados&quot;</span><span class="hl sym">);</span>
+<span class="hl line">   57 </span>   <span class="hl slc">//criação das label's</span>
+<span class="hl line">   58 </span>   <span class="hl kwa">private</span> <span class="hl kwc">JLabel</span> Lsexo <span class="hl sym">=</span> <span class="hl kwa">new</span> <span class="hl kwc">JLabel</span><span class="hl sym">(</span><span class="hl str">&quot;Escolha o sexo:&quot;</span><span class="hl sym">);</span>
+<span class="hl line">   59 </span>   <span class="hl kwa">private</span> <span class="hl kwc">JLabel</span> Laltura <span class="hl sym">=</span> <span class="hl kwa">new</span> <span class="hl kwc">JLabel</span><span class="hl sym">(</span><span class="hl str">&quot;Altura em cm:&quot;</span><span class="hl sym">);</span>
+<span class="hl line">   60 </span>   <span class="hl kwa">private</span> <span class="hl kwc">JLabel</span> Lpeso <span class="hl sym">=</span> <span class="hl kwa">new</span> <span class="hl kwc">JLabel</span><span class="hl sym">(</span><span class="hl str">&quot;Peso em Kg:&quot;</span><span class="hl sym">);</span>
+<span class="hl line">   61 </span>   <span class="hl kwa">private</span> <span class="hl kwc">JLabel</span> Lresultado <span class="hl sym">=</span> <span class="hl kwa">new</span> <span class="hl kwc">JLabel</span><span class="hl sym">(</span><span class="hl str">&quot;&quot;</span><span class="hl sym">);</span>
+<span class="hl line">   62 </span>   <span class="hl kwa">private</span> <span class="hl kwc">JLabel</span> Lfoto <span class="hl sym">=</span> <span class="hl kwa">new</span> <span class="hl kwc">JLabel</span><span class="hl sym">(</span><span class="hl str">&quot;&quot;</span><span class="hl sym">);</span>
+<span class="hl line">   63 </span>   <span class="hl slc">//criação de campos com 5 de largura</span>
+<span class="hl line">   64 </span>   <span class="hl kwa">private</span> <span class="hl kwc">JTextField</span> Faltura <span class="hl sym">=</span> <span class="hl kwa">new</span> <span class="hl kwc">JTextField</span><span class="hl sym">(</span><span class="hl str">&quot;&quot;</span><span class="hl sym">,</span><span class="hl num">5</span><span class="hl sym">);</span>
+<span class="hl line">   65 </span>   <span class="hl kwa">private</span> <span class="hl kwc">JTextField</span> Fpeso <span class="hl sym">=</span> <span class="hl kwa">new</span> <span class="hl kwc">JTextField</span><span class="hl sym">(</span><span class="hl str">&quot;&quot;</span><span class="hl sym">,</span><span class="hl num">5</span><span class="hl sym">);</span>
+<span class="hl line">   66 </span>
+<span class="hl line">   67 </span>   <span class="hl slc">//criação de uma caixa de seleção</span>
+<span class="hl line">   68 </span>   <span class="hl kwa">private</span> <span class="hl kwc">JComboBox</span> escolha <span class="hl sym">=</span> <span class="hl kwa">new</span> <span class="hl kwc">JComboBox</span><span class="hl sym">(</span>sexo<span class="hl sym">);</span>
+<span class="hl line">   69 </span>
+<span class="hl line">   70 </span>   <span class="hl slc">//anexando a imagem um icone de nome limpar</span>
+<span class="hl line">   71 </span>   <span class="hl kwa">private</span> <span class="hl kwc">Icon</span> limpar <span class="hl sym">=</span> <span class="hl kwa">new</span> <span class="hl kwc">ImageIcon</span><span class="hl sym">(</span><span class="hl kwd">getClass</span><span class="hl sym">().</span><span class="hl kwd">getResource</span><span class="hl sym">(</span><span class="hl str">&quot;blank.gif&quot;</span><span class="hl sym">));</span>
+<span class="hl line">   72 </span>   <span class="hl slc">//criando um vetor com as demais imagens</span>
+<span class="hl line">   73 </span>   <span class="hl kwa">private</span> <span class="hl kwc">Icon</span> imagemM<span class="hl sym">[] = {</span><span class="hl kwa">new</span> <span class="hl kwc">ImageIcon</span><span class="hl sym">(</span><span class="hl kwd">getClass</span><span class="hl sym">().</span><span class="hl kwd">getResource</span><span class="hl sym">(</span><span class="hl str">&quot;esqueleto.gif&quot;</span><span class="hl sym">)),</span> <span class="hl kwa">new</span> <span class="hl kwc">ImageIcon</span>
+<span class="hl line">   74 </span>   <span class="hl sym">(</span><span class="hl kwd">getClass</span><span class="hl sym">().</span><span class="hl kwd">getResource</span><span class="hl sym">(</span><span class="hl str">&quot;normalM.jpg&quot;</span><span class="hl sym">)),</span><span class="hl kwa">new</span> <span class="hl kwc">ImageIcon</span><span class="hl sym">(</span><span class="hl kwd">getClass</span><span class="hl sym">().</span><span class="hl kwd">getResource</span><span class="hl sym">(</span><span class="hl str">&quot;obesa.jpg&quot;</span><span class="hl sym">))};</span>
+<span class="hl line">   75 </span>   <span class="hl kwa">private</span> <span class="hl kwc">Icon</span> imagemH<span class="hl sym">[] = {</span><span class="hl kwa">new</span> <span class="hl kwc">ImageIcon</span><span class="hl sym">(</span><span class="hl kwd">getClass</span><span class="hl sym">().</span><span class="hl kwd">getResource</span><span class="hl sym">(</span><span class="hl str">&quot;esqueleto.gif&quot;</span><span class="hl sym">)),</span> <span class="hl kwa">new</span> <span class="hl kwc">ImageIcon</span>
+<span class="hl line">   76 </span>   <span class="hl sym">(</span><span class="hl kwd">getClass</span><span class="hl sym">().</span><span class="hl kwd">getResource</span><span class="hl sym">(</span><span class="hl str">&quot;normalH.jpg&quot;</span><span class="hl sym">)),</span><span class="hl kwa">new</span> <span class="hl kwc">ImageIcon</span><span class="hl sym">(</span><span class="hl kwd">getClass</span><span class="hl sym">().</span><span class="hl kwd">getResource</span><span class="hl sym">(</span><span class="hl str">&quot;obeso.jpg&quot;</span><span class="hl sym">))};</span>
+<span class="hl line">   77 </span>
+<span class="hl line">   78 </span>   <span class="hl slc">//construtor de Ex2 sem argumentos</span>
+<span class="hl line">   79 </span>   <span class="hl kwa">public</span> <span class="hl kwd">Ex2</span><span class="hl sym">()</span>
+<span class="hl line">   80 </span>   <span class="hl sym">{</span>
+<span class="hl line">   81 </span>    <span class="hl slc">//título  da janela</span>
+<span class="hl line">   82 </span>    <span class="hl kwa">super</span><span class="hl sym">(</span><span class="hl str">&quot;Calculo do IMC(índice de massa corporal)&quot;</span><span class="hl sym">);</span>
+<span class="hl line">   83 </span>    <span class="hl slc">//alinhamento do frame com o uso do objeto flowLayout</span>
+<span class="hl line">   84 </span>    <span class="hl kwa">super</span><span class="hl sym">.</span><span class="hl kwd">setLayout</span><span class="hl sym">(</span>flowLayout<span class="hl sym">);</span>
+<span class="hl line">   85 </span>    <span class="hl slc">//tamanho da janela</span>
+<span class="hl line">   86 </span>    <span class="hl kwd">setSize</span><span class="hl sym">(</span><span class="hl num">370</span><span class="hl sym">,</span> <span class="hl num">160</span><span class="hl sym">);</span>
+<span class="hl line">   87 </span>    <span class="hl slc">//inclusão dos componentes de maximinizar, miniminizar e fechar</span>
+<span class="hl line">   88 </span>    <span class="hl kwd">setDefaultCloseOperation</span><span class="hl sym">(</span><span class="hl kwc">JFrame</span><span class="hl sym">.</span>EXIT_ON_CLOSE<span class="hl sym">);</span>
+<span class="hl line">   89 </span>
+<span class="hl line">   90 </span>    <span class="hl slc">//exibe 2 linhas da caixa de seleção ao clicá-la</span>
+<span class="hl line">   91 </span>    escolha<span class="hl sym">.</span><span class="hl kwd">setMaximumRowCount</span><span class="hl sym">(</span><span class="hl num">2</span><span class="hl sym">);</span>
+<span class="hl line">   92 </span>    <span class="hl slc">//alinha o painel com o objeto gridLayout</span>
+<span class="hl line">   93 </span>    gridJPanel<span class="hl sym">.</span><span class="hl kwd">setLayout</span><span class="hl sym">(</span>gridLayout<span class="hl sym">);</span>
+<span class="hl line">   94 </span>    <span class="hl slc">//adiciona os componentes</span>
+<span class="hl line">   95 </span>    gridJPanel<span class="hl sym">.</span><span class="hl kwd">add</span><span class="hl sym">(</span>Lsexo<span class="hl sym">);</span>
+<span class="hl line">   96 </span>    gridJPanel<span class="hl sym">.</span><span class="hl kwd">add</span><span class="hl sym">(</span>escolha<span class="hl sym">);</span>
+<span class="hl line">   97 </span>    gridJPanel<span class="hl sym">.</span><span class="hl kwd">add</span><span class="hl sym">(</span>Laltura<span class="hl sym">);</span>
+<span class="hl line">   98 </span>    gridJPanel<span class="hl sym">.</span><span class="hl kwd">add</span><span class="hl sym">(</span>Faltura<span class="hl sym">);</span>
+<span class="hl line">   99 </span>    gridJPanel<span class="hl sym">.</span><span class="hl kwd">add</span><span class="hl sym">(</span>Lpeso<span class="hl sym">);</span>
+<span class="hl line">  100 </span>    gridJPanel<span class="hl sym">.</span><span class="hl kwd">add</span><span class="hl sym">(</span>Fpeso<span class="hl sym">);</span>
+<span class="hl line">  101 </span>    gridJPanel<span class="hl sym">.</span><span class="hl kwd">add</span><span class="hl sym">(</span>butao<span class="hl sym">);</span>
+<span class="hl line">  102 </span>    gridJPanel<span class="hl sym">.</span><span class="hl kwd">add</span><span class="hl sym">(</span>butao2<span class="hl sym">);</span>
+<span class="hl line">  103 </span>
+<span class="hl line">  104 </span>    <span class="hl slc">//adiciona a janela principal</span>
+<span class="hl line">  105 </span>    <span class="hl kwa">super</span><span class="hl sym">.</span><span class="hl kwd">add</span><span class="hl sym">(</span>gridJPanel<span class="hl sym">);</span>
+<span class="hl line">  106 </span>    <span class="hl kwa">super</span><span class="hl sym">.</span><span class="hl kwd">add</span><span class="hl sym">(</span>Lfoto<span class="hl sym">);</span>
+<span class="hl line">  107 </span>    <span class="hl kwa">super</span><span class="hl sym">.</span><span class="hl kwd">add</span><span class="hl sym">(</span>Lresultado<span class="hl sym">);</span>
+<span class="hl line">  108 </span>
+<span class="hl line">  109 </span>    <span class="hl slc">//criação de uma classe interna anônima para butao</span>
+<span class="hl line">  110 </span>    butao<span class="hl sym">.</span><span class="hl kwd">addActionListener</span><span class="hl sym">(</span>
+<span class="hl line">  111 </span>    <span class="hl kwa">new</span> <span class="hl kwc">ActionListener</span><span class="hl sym">()</span>
+<span class="hl line">  112 </span>    <span class="hl sym">{</span>
+<span class="hl line">  113 </span>       <span class="hl kwa">public</span> <span class="hl kwb">void</span> <span class="hl kwd">actionPerformed</span><span class="hl sym">(</span><span class="hl kwc">ActionEvent</span> event<span class="hl sym">)</span>
+<span class="hl line">  114 </span>       <span class="hl sym">{</span>
+<span class="hl line">  115 </span>        <span class="hl kwa">switch</span> <span class="hl sym">(</span>escolha<span class="hl sym">.</span><span class="hl kwd">getSelectedIndex</span><span class="hl sym">())</span>
+<span class="hl line">  116 </span>        <span class="hl sym">{</span>
+<span class="hl line">  117 </span>           <span class="hl com">/*caso seja a primeira opção que foi selecionada na caixa de seleção</span>
+<span class="hl line">  118 </span><span class="hl com">            configure tipo=0 e vá para o método Calculos*/</span>
+<span class="hl line">  119 </span>           <span class="hl kwa">case</span> <span class="hl num">0</span><span class="hl sym">:</span>
+<span class="hl line">  120 </span>           <span class="hl sym">{</span>
+<span class="hl line">  121 </span>             tipo<span class="hl sym">=</span><span class="hl num">0</span><span class="hl sym">;</span> <span class="hl slc">//mulher</span>
+<span class="hl line">  122 </span>             <span class="hl kwd">Calculos</span><span class="hl sym">();</span>
+<span class="hl line">  123 </span>             <span class="hl kwa">break</span><span class="hl sym">;</span>
+<span class="hl line">  124 </span>           <span class="hl sym">}</span>
+<span class="hl line">  125 </span>           <span class="hl slc">//caso seja a segunda opção, configura tipo como 1 e vá para o método Calculos.</span>
+<span class="hl line">  126 </span>           <span class="hl kwa">case</span> <span class="hl num">1</span><span class="hl sym">:</span>
+<span class="hl line">  127 </span>           <span class="hl sym">{</span>
+<span class="hl line">  128 </span>             tipo<span class="hl sym">=</span><span class="hl num">1</span><span class="hl sym">;</span> <span class="hl slc">//homem</span>
+<span class="hl line">  129 </span>             <span class="hl kwd">Calculos</span><span class="hl sym">();</span>
+<span class="hl line">  130 </span>             <span class="hl kwa">break</span><span class="hl sym">;</span>
+<span class="hl line">  131 </span>           <span class="hl sym">}</span>
+<span class="hl line">  132 </span>        <span class="hl sym">}</span>
+<span class="hl line">  133 </span>       <span class="hl sym">}</span>
+<span class="hl line">  134 </span>     <span class="hl sym">}</span><span class="hl slc">//Fim da classe interna anônima</span>
+<span class="hl line">  135 </span>    <span class="hl sym">);</span><span class="hl slc">//fim da chamada para addActionListerner</span>
+<span class="hl line">  136 </span>
+<span class="hl line">  137 </span>    <span class="hl slc">//classe interna anônima para butao2</span>
+<span class="hl line">  138 </span>    butao2<span class="hl sym">.</span><span class="hl kwd">addActionListener</span><span class="hl sym">(</span>
+<span class="hl line">  139 </span>    <span class="hl kwa">new</span> <span class="hl kwc">ActionListener</span><span class="hl sym">()</span>
+<span class="hl line">  140 </span>    <span class="hl sym">{</span>
+<span class="hl line">  141 </span>       <span class="hl slc">//ao clicar no butao2 de nome limpar chama o método limpar</span>
+<span class="hl line">  142 </span>       <span class="hl kwa">public</span> <span class="hl kwb">void</span> <span class="hl kwd">actionPerformed</span><span class="hl sym">(</span><span class="hl kwc">ActionEvent</span> event<span class="hl sym">)</span>
+<span class="hl line">  143 </span>       <span class="hl sym">{</span>
+<span class="hl line">  144 </span>        <span class="hl kwd">limpar</span><span class="hl sym">();</span>
+<span class="hl line">  145 </span>       <span class="hl sym">}</span>
+<span class="hl line">  146 </span>    <span class="hl sym">}</span><span class="hl slc">//Fim da classe interna anônima</span>
+<span class="hl line">  147 </span>    <span class="hl sym">);</span><span class="hl slc">//fim da chamada para addActionListerner</span>
+<span class="hl line">  148 </span>   <span class="hl sym">}</span>
+<span class="hl line">  149 </span>
+<span class="hl line">  150 </span>   <span class="hl slc">//método que realiza os calculos</span>
+<span class="hl line">  151 </span>   <span class="hl kwa">private</span> <span class="hl kwb">void</span> <span class="hl kwd">Calculos</span><span class="hl sym">()</span>
+<span class="hl line">  152 </span>   <span class="hl sym">{</span>
+<span class="hl line">  153 </span>       <span class="hl kwa">try</span> <span class="hl slc">//tratador de erros com try e catch</span>
+<span class="hl line">  154 </span>       <span class="hl sym">{</span>
+<span class="hl line">  155 </span>          <span class="hl slc">//pega e converte os caracteres em ponto flutuante do campo Faltura para a variavel altura</span>
+<span class="hl line">  156 </span>          altura<span class="hl sym">=</span><span class="hl kwc">Double</span><span class="hl sym">.</span><span class="hl kwd">parseDouble</span><span class="hl sym">(</span>Faltura<span class="hl sym">.</span><span class="hl kwd">getText</span><span class="hl sym">());</span>
+<span class="hl line">  157 </span>          <span class="hl slc">//converte para metros</span>
+<span class="hl line">  158 </span>          altura<span class="hl sym">/=</span><span class="hl num">100</span><span class="hl sym">;</span>
+<span class="hl line">  159 </span>          <span class="hl slc">//da mesma forma com Fpeso para a variável peso</span>
+<span class="hl line">  160 </span>          peso<span class="hl sym">=</span><span class="hl kwc">Double</span><span class="hl sym">.</span><span class="hl kwd">parseDouble</span><span class="hl sym">(</span>Fpeso<span class="hl sym">.</span><span class="hl kwd">getText</span><span class="hl sym">());</span>
+<span class="hl line">  161 </span>          <span class="hl slc">//realiza calculos</span>
+<span class="hl line">  162 </span>          massa<span class="hl sym">=</span>peso<span class="hl sym">/(</span>altura<span class="hl sym">*</span>altura<span class="hl sym">);</span>
+<span class="hl line">  163 </span>          <span class="hl com">/*Se a massa corporal for menor do que o estabelecido pelo vetor configure a variável</span>
+<span class="hl line">  164 </span><span class="hl com">           string com essa frase*/</span>
+<span class="hl line">  165 </span>         <span class="hl kwa">if</span> <span class="hl sym">(</span>tipo<span class="hl sym">==</span><span class="hl num">0</span><span class="hl sym">)</span>
+<span class="hl line">  166 </span>         <span class="hl sym">{</span>
+<span class="hl line">  167 </span>            <span class="hl kwa">if</span> <span class="hl sym">(</span>imc_mulheres<span class="hl sym">[</span><span class="hl num">0</span><span class="hl sym">]&gt;</span>massa<span class="hl sym">)</span>
+<span class="hl line">  168 </span>            <span class="hl sym">{</span>
+<span class="hl line">  169 </span>               string <span class="hl sym">=</span> <span class="hl kwc">String</span><span class="hl sym">.</span><span class="hl kwd">format</span><span class="hl sym">(</span><span class="hl str">&quot;CUIDADO!!!Voce estar abaixo do peso! IMC %.2f&quot;</span><span class="hl sym">,</span>massa<span class="hl sym">);</span>
+<span class="hl line">  170 </span>               foto<span class="hl sym">=</span><span class="hl num">0</span><span class="hl sym">;</span>
+<span class="hl line">  171 </span>            <span class="hl sym">}</span>
+<span class="hl line">  172 </span>            <span class="hl kwa">else if</span><span class="hl sym">((</span>imc_mulheres<span class="hl sym">[</span><span class="hl num">0</span><span class="hl sym">]&lt;</span>massa<span class="hl sym">) &amp;&amp; (</span>massa<span class="hl sym">&lt;=</span>imc_mulheres<span class="hl sym">[</span><span class="hl num">1</span><span class="hl sym">]))</span>
+<span class="hl line">  173 </span>            <span class="hl sym">{</span>
+<span class="hl line">  174 </span>               string <span class="hl sym">=</span> <span class="hl kwc">String</span><span class="hl sym">.</span><span class="hl kwd">format</span><span class="hl sym">(</span><span class="hl str">&quot;PARABENS!!Voce estar com o peso ideal! IMC %.2f&quot;</span><span class="hl sym">,</span>massa<span class="hl sym">);</span>
+<span class="hl line">  175 </span>               foto<span class="hl sym">=</span><span class="hl num">1</span><span class="hl sym">;</span>
+<span class="hl line">  176 </span>            <span class="hl sym">}</span>
+<span class="hl line">  177 </span>            <span class="hl kwa">else</span>
+<span class="hl line">  178 </span>            <span class="hl sym">{</span>
+<span class="hl line">  179 </span>               string <span class="hl sym">=</span> <span class="hl kwc">String</span><span class="hl sym">.</span><span class="hl kwd">format</span><span class="hl sym">(</span><span class="hl str">&quot;CUIDADO!!Voce estar obesa! IMC %.2f&quot;</span><span class="hl sym">,</span>massa<span class="hl sym">);</span>
+<span class="hl line">  180 </span>               foto<span class="hl sym">=</span><span class="hl num">2</span><span class="hl sym">;</span>
+<span class="hl line">  181 </span>            <span class="hl sym">}</span>
+<span class="hl line">  182 </span>            <span class="hl slc">//configure a foto conforme a posição da variável foto</span>
+<span class="hl line">  183 </span>            Lfoto<span class="hl sym">.</span><span class="hl kwd">setIcon</span><span class="hl sym">(</span>imagemM<span class="hl sym">[</span>foto<span class="hl sym">]);</span>
+<span class="hl line">  184 </span>         <span class="hl sym">}</span>
+<span class="hl line">  185 </span>         <span class="hl kwa">else if</span> <span class="hl sym">(</span>tipo<span class="hl sym">==</span><span class="hl num">1</span><span class="hl sym">)</span>
+<span class="hl line">  186 </span>         <span class="hl sym">{</span>
+<span class="hl line">  187 </span>            <span class="hl kwa">if</span> <span class="hl sym">(</span>imc_homens<span class="hl sym">[</span><span class="hl num">0</span><span class="hl sym">]&gt;</span>massa<span class="hl sym">)</span>
+<span class="hl line">  188 </span>            <span class="hl sym">{</span>
+<span class="hl line">  189 </span>               string <span class="hl sym">=</span> <span class="hl kwc">String</span><span class="hl sym">.</span><span class="hl kwd">format</span><span class="hl sym">(</span><span class="hl str">&quot;CUIDADO!!!Voce estar abaixo do peso! IMC %.2f&quot;</span><span class="hl sym">,</span>massa<span class="hl sym">);</span>
+<span class="hl line">  190 </span>               <span class="hl slc">//configura a posição que será exibido a imagem</span>
+<span class="hl line">  191 </span>               foto<span class="hl sym">=</span><span class="hl num">0</span><span class="hl sym">;</span>
+<span class="hl line">  192 </span>            <span class="hl sym">}</span>
+<span class="hl line">  193 </span>            <span class="hl kwa">else if</span><span class="hl sym">((</span>imc_homens<span class="hl sym">[</span><span class="hl num">0</span><span class="hl sym">]&lt;</span>massa<span class="hl sym">) &amp;&amp; (</span>massa<span class="hl sym">&lt;</span>imc_homens<span class="hl sym">[</span><span class="hl num">1</span><span class="hl sym">]))</span>
+<span class="hl line">  194 </span>            <span class="hl sym">{</span>
+<span class="hl line">  195 </span>               string <span class="hl sym">=</span> <span class="hl kwc">String</span><span class="hl sym">.</span><span class="hl kwd">format</span><span class="hl sym">(</span><span class="hl str">&quot;PARABENS!!Voce estar com o peso ideal! IMC %.2f&quot;</span><span class="hl sym">,</span>massa<span class="hl sym">);</span>
+<span class="hl line">  196 </span>               foto<span class="hl sym">=</span><span class="hl num">1</span><span class="hl sym">;</span>
+<span class="hl line">  197 </span>            <span class="hl sym">}</span>
+<span class="hl line">  198 </span>            <span class="hl kwa">else</span>
+<span class="hl line">  199 </span>            <span class="hl sym">{</span>
+<span class="hl line">  200 </span>               string <span class="hl sym">=</span> <span class="hl kwc">String</span><span class="hl sym">.</span><span class="hl kwd">format</span><span class="hl sym">(</span><span class="hl str">&quot;CUIDADO!!Voce estar obeso! IMC %.2f&quot;</span><span class="hl sym">,</span>massa<span class="hl sym">);</span>
+<span class="hl line">  201 </span>               foto<span class="hl sym">=</span><span class="hl num">2</span><span class="hl sym">;</span>
+<span class="hl line">  202 </span>            <span class="hl sym">}</span>
+<span class="hl line">  203 </span>            <span class="hl slc">//configure a foto conforme a posição da variável foto</span>
+<span class="hl line">  204 </span>            Lfoto<span class="hl sym">.</span><span class="hl kwd">setIcon</span><span class="hl sym">(</span>imagemH<span class="hl sym">[</span>foto<span class="hl sym">]);</span>
+<span class="hl line">  205 </span>         <span class="hl sym">}</span>
+<span class="hl line">  206 </span>          <span class="hl slc">//reconfigure o tamanho da tela</span>
+<span class="hl line">  207 </span>          <span class="hl kwd">setSize</span><span class="hl sym">(</span><span class="hl num">370</span><span class="hl sym">,</span> <span class="hl num">500</span><span class="hl sym">);</span>
+<span class="hl line">  208 </span>          <span class="hl slc">//configure a label Lresultado com a variável string</span>
+<span class="hl line">  209 </span>          Lresultado<span class="hl sym">.</span><span class="hl kwd">setText</span><span class="hl sym">(</span>string<span class="hl sym">);</span>
+<span class="hl line">  210 </span>       <span class="hl sym">}</span>
+<span class="hl line">  211 </span>       <span class="hl slc">//caso ocorra uma excessão(erro) exiba uma mensagem nua caixa de mensagem</span>
+<span class="hl line">  212 </span>       <span class="hl kwa">catch</span><span class="hl sym">(</span><span class="hl kwc">NumberFormatException</span> exception<span class="hl sym">)</span>
+<span class="hl line">  213 </span>       <span class="hl sym">{</span>
+<span class="hl line">  214 </span>        <span class="hl kwc">JOptionPane</span><span class="hl sym">.</span><span class="hl kwd">showMessageDialog</span><span class="hl sym">(</span><span class="hl kwa">this</span><span class="hl sym">,</span><span class="hl str">&quot;No número inválido!</span><span class="hl esc">\n</span><span class="hl str">Ex: Use '.' ao invés de ',' para separar as casas decimais.&quot;</span><span class="hl sym">,</span><span class="hl str">&quot;ERROR FATAL!!!&quot;</span><span class="hl sym">,</span><span class="hl kwc">JOptionPane</span><span class="hl sym">.</span>ERROR_MESSAGE<span class="hl sym">);</span>
+<span class="hl line">  215 </span>        <span class="hl slc">//limpe s campos e variáveis</span>
+<span class="hl line">  216 </span>        Fpeso<span class="hl sym">.</span><span class="hl kwd">setText</span><span class="hl sym">(</span><span class="hl str">&quot;&quot;</span><span class="hl sym">);</span>
+<span class="hl line">  217 </span>        Faltura<span class="hl sym">.</span><span class="hl kwd">setText</span><span class="hl sym">(</span><span class="hl str">&quot;&quot;</span><span class="hl sym">);</span>
+<span class="hl line">  218 </span>        peso<span class="hl sym">=</span><span class="hl num">0</span><span class="hl sym">;</span>
+<span class="hl line">  219 </span>        altura<span class="hl sym">=</span><span class="hl num">0</span><span class="hl sym">;</span>
+<span class="hl line">  220 </span>       <span class="hl sym">}</span>
+<span class="hl line">  221 </span>   <span class="hl sym">}</span>
+<span class="hl line">  222 </span>   <span class="hl slc">//método para limpar os dados da tela e retornar a tela ao seu tamanho original</span>
+<span class="hl line">  223 </span>   <span class="hl kwa">private</span> <span class="hl kwb">void</span> <span class="hl kwd">limpar</span><span class="hl sym">()</span>
+<span class="hl line">  224 </span>   <span class="hl sym">{</span>
+<span class="hl line">  225 </span>    Fpeso<span class="hl sym">.</span><span class="hl kwd">setText</span><span class="hl sym">(</span><span class="hl str">&quot;&quot;</span><span class="hl sym">);</span>
+<span class="hl line">  226 </span>    Faltura<span class="hl sym">.</span><span class="hl kwd">setText</span><span class="hl sym">(</span><span class="hl str">&quot;&quot;</span><span class="hl sym">);</span>
+<span class="hl line">  227 </span>    Lresultado<span class="hl sym">.</span><span class="hl kwd">setText</span><span class="hl sym">(</span><span class="hl str">&quot;&quot;</span><span class="hl sym">);</span>
+<span class="hl line">  228 </span>    <span class="hl slc">//substitua a imagem atual por essa</span>
+<span class="hl line">  229 </span>    Lfoto<span class="hl sym">.</span><span class="hl kwd">setIcon</span><span class="hl sym">(</span>limpar<span class="hl sym">);</span>
+<span class="hl line">  230 </span>    <span class="hl kwd">setSize</span><span class="hl sym">(</span><span class="hl num">300</span><span class="hl sym">,</span> <span class="hl num">160</span><span class="hl sym">);</span>
+<span class="hl line">  231 </span>   <span class="hl sym">}</span>
+<span class="hl line">  232 </span><span class="hl sym">}</span><span class="hl slc">//Fim da classe Ex2</span>
+</pre>
+</body>
+</html>
+<!--HTML generated by highlight 2.7, http://www.andre-simon.de/-->

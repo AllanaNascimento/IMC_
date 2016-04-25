@@ -1,0 +1,19 @@
+Faça um programa que calcule o IMC(índice de massa corporal) com base nos dados:
+IMC = peso / (altura)²
+Condição IMC em (M)ulheres e (H)omens, respecticamente:
+
+Abaixo do peso
+M < 19,1
+H < 20,7 
+
+Peso ideal
+Mulheres 19,1 - 25,8
+Homens 20,7 - 26,4
+
+Acima do peso ideal
+Mulheres 25,8 - 31,1
+Homens 26,4 - 32,3
+
+obeso
+Mulheres > 31,1
+Homens > 32,3
